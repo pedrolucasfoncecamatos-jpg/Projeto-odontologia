@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel Administrativo - Dr. Wilson Guedes</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Inter', 'sans-serif'] },
+                    colors: { dental: { 50: '#f0f9ff', 100: '#e0f2fe', 400: '#38bdf8', 500: '#06b6d4', 600: '#0284c7', 700: '#0369a1', 800: '#075985', 900: '#0c4a6e' } }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-slate-900 text-white font-sans antialiased min-h-screen flex flex-col justify-between">
+
+    <header id="appHeader" class="sticky top-0 z-40 bg-white text-slate-800 border-b border-slate-100 shadow-sm"></header>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 w-full">
+        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-8 gap-4 border-b border-slate-800 pb-6">
+            <div>
+                <span class="px-3 py-1 bg-dental-500/20 text-dental-400 border border-dental-500/30 rounded-full text-xs font-semibold">Painel Administrativo</span>
+                <h1 class="text-3xl font-extrabold mt-2">Consultas Agendadas pelos Pacientes</h1>
+            </div>
+            <button id="btnLimparTudo" class="px-4 py-2.5 bg-red-500/20 hover:bg-red-500/30 text-red-300 text-xs font-semibold rounded-xl border border-red-500/30 transition-colors">
+                <i class="fa-solid fa-trash mr-1.5"></i>Limpar Registros
+            </button>
+        </div>
+
+        <div class="bg-slate-800/80 rounded-2xl border border-slate-700/80 overflow-hidden shadow-2xl">
+            <div class="overflow-x-auto">
+                <table class="w-full text-left text-sm">
+                    <thead class="bg-slate-950 text-slate-400 font-semibold uppercase text-xs">
+                        <tr>
+                            <th class="px-6 py-4">Paciente</th>
+                            <th class="px-6 py-4">Procedimento</th>
+                            <th class="px-6 py-4">Data</th>
+                            <th class="px-6 py-4">Horário</th>
+                            <th class="px-6 py-4">Preço / Status</th>
+                            <th class="px-6 py-4 text-center">Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody id="dentistAppointmentsList" class="divide-y divide-slate-700/60 text-slate-200"></tbody>
+                </table>
+            </div>
+            <div id="noAppointmentsMsg" class="p-10 text-center text-slate-500 hidden">
+                <i class="fa-regular fa-folder-open text-3xl mb-2 block"></i>
+                Nenhuma consulta agendada até o momento.
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-slate-950 text-slate-400 py-8 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs">
+            <p>&copy; 2026 Consultório Odontológico Dr. Wilson de Jesus Guedes Matos.</p>
+            <p class="text-slate-500">CRO: 01341 | São Luís - MA</p>
+        </div>
+    </footer>
+
+    <script type="module">
+        import { renderizarCabecalho } from '../visoens/cabeçalho.js';
+        import { iniciarControlePainelDentista } from '../controles/ControlePainelDentista.js';
+        renderizarCabecalho('dentista');
+        iniciarControlePainelDentista();
+    </script>
+</body>
+</html>

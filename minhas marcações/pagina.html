@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minhas Marcações - Área do Cliente</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Inter', 'sans-serif'] },
+                    colors: { dental: { 50: '#f0f9ff', 100: '#e0f2fe', 500: '#06b6d4', 600: '#0284c7', 700: '#0369a1', 800: '#075985', 900: '#0c4a6e' } }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-dental-50/50 text-slate-800 font-sans antialiased min-h-screen flex flex-col justify-between">
+
+    <header id="appHeader" class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-100 shadow-sm"></header>
+
+    <main class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-14 w-full">
+        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-8 gap-4">
+            <div>
+                <span class="px-3 py-1 bg-dental-100 text-dental-800 border border-dental-200 rounded-full text-xs font-bold uppercase tracking-wider">Área do Cliente</span>
+                <h1 class="text-3xl font-extrabold text-slate-900 mt-2">Minhas Marcações</h1>
+                <p class="text-sm text-slate-500 mt-1">Acompanhe ou gerencie suas consultas agendadas no consultório.</p>
+            </div>
+            <a href="../agendamento/pagina.html" class="px-5 py-3 bg-dental-600 hover:bg-dental-700 text-white text-xs font-bold rounded-xl shadow-md transition-colors flex items-center gap-2">
+                <i class="fa-solid fa-plus"></i> Nova Marcação
+            </a>
+        </div>
+
+        <div id="clientAppointmentsList" class="grid grid-cols-1 md:grid-cols-2 gap-6"></div>
+
+        <div id="noClientAppointmentsMsg" class="hidden bg-white rounded-3xl border border-slate-200/80 p-12 text-center shadow-sm">
+            <div class="w-16 h-16 bg-dental-50 text-dental-600 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                <i class="fa-regular fa-calendar-xmark text-2xl"></i>
+            </div>
+            <h3 class="text-lg font-bold text-slate-900">Você ainda não possui marcações</h3>
+            <p class="text-sm text-slate-500 mt-1 max-w-md mx-auto">Escolha um procedimento e horário para agendar sua consulta com o Dr. Wilson.</p>
+            <a href="../agendamento/pagina.html" class="inline-flex items-center gap-2 mt-5 px-6 py-3 bg-dental-600 hover:bg-dental-700 text-white text-sm font-bold rounded-xl shadow-md transition-all">
+                <i class="fa-regular fa-calendar-plus"></i> Fazer Primeiro Agendamento
+            </a>
+        </div>
+    </main>
+
+    <footer class="bg-slate-950 text-slate-400 py-8 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs">
+            <p>&copy; 2026 Consultório Odontológico Dr. Wilson de Jesus Guedes Matos.</p>
+            <p class="text-slate-500">CRO: 01341 | São Luís - MA</p>
+        </div>
+    </footer>
+
+    <script type="module">
+        import { renderizarCabecalho } from '../visoens/cabeçalho.js';
+        import { iniciarControleMinhasMarcacoes } from '../controles/controleMinhasMarcaçõens.js';
+        renderizarCabecalho('marcacoes');
+        iniciarControleMinhasMarcacoes();
+    </script>
+</body>
+</html>
